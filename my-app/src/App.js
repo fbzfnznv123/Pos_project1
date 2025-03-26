@@ -6,7 +6,7 @@ function App() {
   // สร้าง state เพื่อเก็บข้อมูลสินค้าและหน้าปัจจุบัน
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 25; // จำนวนสินค้าต่อหน้า
+  const productsPerPage = 25; // จำนวนสินค้าต่อหน้า (5 แถว x 5 คอลัมน์)
 
   // ใช้ useEffect เพื่อเรียก API เมื่อ component โหลดครั้งแรก
   useEffect(() => {
@@ -37,15 +37,15 @@ function App() {
       <div className="row">
         {products.length > 0 ? (
           currentProducts.map(product => (
-            <div className="col-md-4 mb-3" key={product.productId}>
-              <div className="card">
+            <div className="col-md-2 col-sm-4 mb-3" key={product.productId}>
+              <div className="card h-100">
                 <img src={product.imgUrl} className="card-img-top" alt={product.productName} />
                 <div className="card-body">
-                  <h5 className="card-title">{product.productName}</h5>
-                  <p className="card-text">{product.productDescription}</p>
+                  <h6 className="card-title">{product.productName}</h6>
+                  <p className="card-text text-truncate">{product.productDescription}</p>
                   <p className="card-text">ราคา: {product.price} บาท</p>
                   <p className="card-text">สถานะ: {product.status}</p>
-                  <button className="btn btn-primary">ดูรายละเอียด</button>
+                  <button className="btn btn-primary btn-sm">ดูรายละเอียด</button>
                 </div>
               </div>
             </div>
