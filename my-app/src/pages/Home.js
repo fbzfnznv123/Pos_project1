@@ -6,7 +6,7 @@ function Home({ searchTerm }) {
   const productsPerPage = 25;
 
   useEffect(() => {
-    fetch("http://175.17.4.34:8888/uat/getAllProduct")
+    fetch("http://192.168.43.222:8888/uat/getAllProduct")
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(error => console.error("เกิดข้อผิดพลาด:", error));

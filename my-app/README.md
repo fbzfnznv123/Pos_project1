@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+npm run start
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+SELECT product_id,product_name,product_description,price,create_time,stock_id,status,img_url,update_at FROM products ORDER BY update_at DESC;
 
-In the project directory, you can run:
+update  products  set  img_url = './logo192.png'
 
-### `npm start`
+;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+delete from 
+  products ;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CREATE TABLE `products` (
+  `product_id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `product_name` varchar(255) NOT NULL COMMENT 'Product Name',
+  `product_description` text COMMENT 'Product Description',
+  `price` int NOT NULL COMMENT 'Product Price',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Create Time',
+  `stock_id` int DEFAULT NULL COMMENT 'Stock ID',  -- `stock_id` ไม่มี AUTO_INCREMENT
+  `status` enum('active','inactive') DEFAULT 'active' COMMENT 'Product Status',
+  `img_url` varchar(1000) DEFAULT NULL COMMENT 'Product Image URL',
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update Time',
+  PRIMARY KEY (`product_id`),
+  UNIQUE (`stock_id`)  -- ถ้าต้องการให้ `stock_id` มีค่าไม่ซ้ำกัน
+);
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+update 
+  products 
+set 
+  product_name = product_name,
+  
+where 
+  product_id = 'product_id';
